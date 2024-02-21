@@ -17,9 +17,9 @@ class _BottonNavBarState extends State<BottonNavBar> {
     return BottomNavigationBar(
       unselectedItemColor: Colors.grey,
       selectedItemColor: Colors.indigo,
+      type: BottomNavigationBarType.fixed,
       showSelectedLabels: false,
-      currentIndex: _selectedIndex,
-      onTap: (index) => setState(() => _selectedIndex = index),
+      showUnselectedLabels: false,
       items: const [
         BottomNavigationBarItem(
           icon: Icon(Icons.home_outlined),
@@ -55,6 +55,8 @@ class _BottonNavBarState extends State<BottonNavBar> {
           activeIcon: IconWithCircle(icon: Icons.more_horiz),
         ),
       ],
+      currentIndex: _selectedIndex,
+      onTap: (index) => setState(() => _selectedIndex = index),
     );
   }
 }

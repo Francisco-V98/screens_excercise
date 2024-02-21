@@ -7,29 +7,29 @@ class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Stack(
-        children: [
-          GradientBackground(),
-          _AppBarDashboard(),
-          Padding(
-            padding: EdgeInsets.fromLTRB(24, 80, 24, 0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _Amount(),
-                _GroupBoxContainers(),
-                _GroupCirclePeople(),
-              ],
+      body: SingleChildScrollView(
+        child: Stack(
+          children: [
+            GradientBackground(),
+            _AppBarDashboard(),
+            Padding(
+              padding: EdgeInsets.fromLTRB(24, 80, 24, 0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _Amount(),
+                  _GroupBoxContainers(),
+                  _GroupCirclePeople(),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
       bottomNavigationBar: BottonNavBar(),
     );
   }
 }
-
-
 
 class _AppBarDashboard extends StatelessWidget {
   const _AppBarDashboard();
@@ -37,6 +37,7 @@ class _AppBarDashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      elevation: 0,
       backgroundColor: Colors.transparent,
       title: Text(
         'Hola Francisco,',
@@ -90,6 +91,7 @@ class _SelectCountry extends StatelessWidget {
       child: Row(
         children: [
           const FlagCircleIcon(),
+          // const DropdownPrueba(),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Text(
@@ -110,6 +112,29 @@ class _SelectCountry extends StatelessWidget {
     );
   }
 }
+
+// class DropdownPrueba extends StatelessWidget {
+//   const DropdownPrueba({
+//     super.key,
+//   });
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return DropdownButton(
+//       // underline: 0,
+//       hint: const Row(
+//         children: [
+//           FlagCircleIcon(),
+//           SizedBox(width: 12),
+//           Text('VZLA'),
+//         ],
+//       ),
+//       icon: const Icon(Icons.arrow_drop_down),
+//       items: const [],
+//       onChanged: (value) => value,
+//     );
+//   }
+// }
 
 class _GroupBoxContainers extends StatelessWidget {
   const _GroupBoxContainers();
