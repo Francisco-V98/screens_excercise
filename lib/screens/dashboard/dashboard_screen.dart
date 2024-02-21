@@ -24,9 +24,12 @@ class DashboardScreen extends StatelessWidget {
           ),
         ],
       ),
+      bottomNavigationBar: BottonNavBar(),
     );
   }
 }
+
+
 
 class _AppBarDashboard extends StatelessWidget {
   const _AppBarDashboard();

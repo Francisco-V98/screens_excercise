@@ -1,1 +1,1 @@
-export 'package:screens_excercise/screens/login_screen/dashboard/dashboard_screen.dart';
+export 'package:screens_excercise/screens/dashboard/dashboard_screen.dart';
