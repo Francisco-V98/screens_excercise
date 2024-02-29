@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:screens_excercise/widgets/bottomsheet_widgets/widgets_bottomsheet.dart';
 
-
 class ContentBottomSheet extends StatelessWidget {
-  const ContentBottomSheet({
-    super.key,
-  });
+  final Function(Color) bgColor;
+
+  const ContentBottomSheet(this.bgColor, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +14,21 @@ class ContentBottomSheet extends StatelessWidget {
         children: [
           titleBottomSheet(),
           const SizedBox(height: 40),
-          const GroupContainersBottomSheet(),
+          Wrap(
+            spacing: 20,
+            runSpacing: 20,
+            children: [
+              ContainerColorBottomSheets(color: Colors.red, bgColor: bgColor),
+              ContainerColorBottomSheets(color: Colors.green, bgColor: bgColor),
+              ContainerColorBottomSheets(color: Colors.purple, bgColor: bgColor),
+              ContainerColorBottomSheets(color: Colors.orange, bgColor: bgColor),
+              ContainerColorBottomSheets(color: Colors.blue, bgColor: bgColor),
+              ContainerColorBottomSheets(color: Colors.grey, bgColor: bgColor),
+              ContainerColorBottomSheets(color: Colors.indigo, bgColor: bgColor),
+              ContainerColorBottomSheets(color: Colors.cyan, bgColor: bgColor),
+              ContainerColorBottomSheets(color: Colors.brown, bgColor: bgColor),
+            ],
+          ),
         ],
       ),
     );

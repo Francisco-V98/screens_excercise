@@ -7,7 +7,6 @@ class BottomSheetPractice extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.red,
       appBar: appBarNew(),
       body: const _Body(),
     );
@@ -27,18 +26,33 @@ class BottomSheetPractice extends StatelessWidget {
   }
 }
 
-class _Body extends StatelessWidget {
+class _Body extends StatefulWidget {
   const _Body();
 
   @override
+  State<_Body> createState() => _BodyState();
+}
+
+class _BodyState extends State<_Body> {
+
+  Color bgColor = Colors.white;
+
+  @override
   Widget build(BuildContext context) {
-    return Center(
-      child: ElevatedButton(
-        onPressed: () {
-          bottomSheet(context);
-        },
-        child: const Text('Abrir BottomSheet'),
-      ),
+    return Stack(
+      children: [
+        Container(
+          color: bgColor,
+        ),
+        Center(
+          child: ElevatedButton(
+            onPressed: () {
+              bottomSheet(context);
+            },
+            child: const Text('Abrir BottomSheet'),
+          ),
+        ),
+      ],
     );
   }
 
@@ -55,15 +69,17 @@ class _Body extends StatelessWidget {
               topRight: Radius.circular(24),
             ),
           ),
-          child: const ContentBottomSheet(),
+          child: ContentBottomSheet(changeBgColor),
         );
       },
     );
   }
+
+  void changeBgColor(Color color) {
+      setState(() {
+        bgColor = color;
+      });
+    }
+  
+  
 }
-
-
-
-
-
-
