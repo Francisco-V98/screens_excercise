@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:screens_excercise/widgets/bottomsheet_widgets/widgets_bottomsheet.dart';
 import 'package:screens_excercise/widgets/general/widgets.dart';
 
-class BottomSheetPractice extends StatelessWidget {
-  const BottomSheetPractice({super.key});
+class BottomSheetScreen extends StatelessWidget {
+  const BottomSheetScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
