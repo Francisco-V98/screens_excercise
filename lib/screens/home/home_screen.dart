@@ -18,12 +18,7 @@ class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: 2,
-      itemBuilder: (BuildContext context, int index) {
-        return ;
-      },
-    );
+    return const Placeholder();
   }
 }
 
