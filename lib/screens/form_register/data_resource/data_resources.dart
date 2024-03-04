@@ -1,0 +1,1 @@
+export 'package:screens_excercise/screens/form_register/data_resource/lists_data.dart';

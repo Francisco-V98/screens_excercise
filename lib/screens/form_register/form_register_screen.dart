@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:screens_excercise/widgets/form_register_widgets/form_register_widgets.dart';
 import 'package:screens_excercise/widgets/general/widgets.dart';
+import 'package:screens_excercise/screens/form_register/data_resource/lists_data.dart';
 
 class FormRegisterScreen extends StatelessWidget {
   const FormRegisterScreen({super.key});
@@ -21,146 +23,80 @@ class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        children: [
-          const Row(
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: SizedBox(
+          child: Column(
             children: [
-              TextFieldFormPractice(hint: 'Nombre'),
-              SizedBox(width: 16),
-              TextFieldFormPractice(hint: 'Apellido'),
+              fullNameSection(),
+              const SizedBox(height: 16),
+              citiesAndGendersSection(),
+              const SizedBox(height: 16),
+              adressAndDescriptionSection(),
+              const SizedBox(height: 8),
+              checkbox(),
+              const SizedBox(height: 150),
+              const ButtonActionPrimary()
             ],
           ),
-          const SizedBox(height: 16),
-          Row(
-            children: [
-              DropdownFormPractice(hint: 'Cuidad', listDropdown: cities),
-              const SizedBox(width: 16),
-              DropdownFormPractice(hint: 'Genero', listDropdown: genders),
-            ],
-          ),
-          const SizedBox(height: 16),
-          const SizedBox( height: 48, child: TextFieldFormPractice(hint: 'Dirección')),
-          const SizedBox(height: 16),
-          const Row(children: [TextFieldFormPractice(hint: 'Descripción',height: 150,)]),
-        ],
-      ),
-    );
-  }
-}
-
-List<String> cities = [
-  'Caracas',
-  'Maracaibo',
-  'Valencia',
-  'Barquisimeto',
-  'Maracay',
-  'Ciudad Guayana',
-  'Barcelona',
-  'Maturín',
-  'San Cristóbal',
-  'Cumaná',
-];
-
-List<String> genders = [
-  'Masculino',
-  'Femenino',
-  'No binario',
-  'Género fluido',
-  'Agénero',
-  'Bigénero',
-  'Pangénero',
-  'Transexual',
-  'Cisgénero',
-  'Intersexual',
-  'Andrógino',
-  'Demiboy',
-  'Demigirl',
-  'Queer',
-];
-
-class DropdownFormPractice extends StatefulWidget {
-  final String hint;
-  final List<String> listDropdown;
-  const DropdownFormPractice({
-    super.key,
-    required this.hint,
-    required this.listDropdown,
-  });
-
-  @override
-  State<DropdownFormPractice> createState() => _DropdownFormPracticeState();
-}
-
-class _DropdownFormPracticeState extends State<DropdownFormPractice> {
-  String? dropdownValue;
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        padding: const EdgeInsets.only(left: 8),
-        decoration: BoxDecoration(
-          border: Border.all(width: 1.5, color: Colors.grey),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: DropdownButton<String>(
-          borderRadius: const BorderRadius.all(Radius.circular(8)),
-          menuMaxHeight: 300,
-          underline: Container(
-            height: 0,
-          ),
-          hint: Text(widget.hint),
-          icon: const Icon(Icons.arrow_drop_down),
-          value: dropdownValue,
-          onChanged: (String? newValue) {
-            setState(() {
-              dropdownValue = newValue!;
-            });
-          },
-          items:
-              widget.listDropdown.map<DropdownMenuItem<String>>((String value) {
-            return DropdownMenuItem<String>(
-              value: value,
-              child: Text(value),
-            );
-          }).toList(),
         ),
       ),
     );
   }
-}
 
-class TextFieldFormPractice extends StatelessWidget {
-  final double? height;
-  final String hint;
-  const TextFieldFormPractice({
-    super.key,
-    required this.hint, this.height,
-  });
+  Row checkbox() {
+    return const Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        CheckboxDefault(),
+        SizedBox(height: 4),
+        Text(
+          'Acepto los términos y condiciones',
+          style: TextStyle(
+              fontSize: 16, fontWeight: FontWeight.w500, color: Colors.indigo),
+        )
+      ],
+    );
+  }
 
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: SizedBox(
-        height: height,
-        child: TextField(
-          decoration: InputDecoration(
-            focusedBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Colors.indigo, width: 2),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Colors.grey, width: 1.5),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            hintText: hint,
-            contentPadding: const EdgeInsets.only(left: 12),
+  Column adressAndDescriptionSection() {
+    return const Column(
+      children: [
+        TextfieldImput(hint: 'Direccion'),
+        SizedBox(height: 16),
+        TextfieldImput(hint: 'Descripcion', height: 100),
+      ],
+    );
+  }
+
+  Row citiesAndGendersSection() {
+    return Row(
+      children: [
+        Expanded(
+          child: DropdownDefault(
+            hint: 'Ciudad',
+            listDropdown: cities,
           ),
-          textAlignVertical: TextAlignVertical.top,
         ),
-      ),
+        const SizedBox(width: 16),
+        Expanded(
+          child: DropdownDefault(
+            hint: 'Genero',
+            listDropdown: genders,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Row fullNameSection() {
+    return const Row(
+      children: [
+        Expanded(child: TextfieldImput(hint: 'Nombre')),
+        SizedBox(width: 16),
+        Expanded(child: TextfieldImput(hint: 'Apellido')),
+      ],
     );
   }
 }

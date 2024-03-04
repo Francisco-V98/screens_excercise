@@ -11,7 +11,7 @@ class AppBarNew extends StatelessWidget implements PreferredSizeWidget {
     required this.title,
     this.leadingIcon,
     this.actionIcon,
-    this.backgroundColor = Colors.white,
+    this.backgroundColor = Colors.transparent,
   });
 
   @override
