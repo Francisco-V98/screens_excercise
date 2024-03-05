@@ -5,6 +5,7 @@ class AppBarNew extends StatelessWidget implements PreferredSizeWidget {
   final IconData? leadingIcon;
   final IconData? actionIcon;
   final Color? backgroundColor;
+  final Function()? onpressed;
 
   const AppBarNew({
     super.key,
@@ -12,6 +13,7 @@ class AppBarNew extends StatelessWidget implements PreferredSizeWidget {
     this.leadingIcon,
     this.actionIcon,
     this.backgroundColor = Colors.transparent,
+    this.onpressed,
   });
 
   @override
@@ -28,7 +30,7 @@ class AppBarNew extends StatelessWidget implements PreferredSizeWidget {
           fontSize: 20,
         ),
       ),
-      leading: Icon(leadingIcon),
+      leading: IconButton(onPressed: onpressed, icon: Icon(leadingIcon)),
       actions: [Icon(actionIcon)],
     );
   }

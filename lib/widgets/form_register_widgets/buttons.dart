@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ButtonActionPrimary extends StatelessWidget {
+  final Function()? onPressed;
   const ButtonActionPrimary({
-    super.key,
+    super.key, this.onPressed,
   });
 
   @override
@@ -14,7 +15,8 @@ class ButtonActionPrimary extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         backgroundColor: Colors.indigo,
         elevation: 2,
-        onPressed: () {},
+        onPressed: onPressed,
+        
         child: const Text(
           'Registrarse',
           style: TextStyle(
