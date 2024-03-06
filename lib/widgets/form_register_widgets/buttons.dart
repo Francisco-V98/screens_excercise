@@ -16,7 +16,6 @@ class ButtonActionPrimary extends StatelessWidget {
         backgroundColor: Colors.indigo,
         elevation: 2,
         onPressed: onPressed,
-        
         child: const Text(
           'Registrarse',
           style: TextStyle(

@@ -10,7 +10,7 @@ class TextfieldImput extends StatefulWidget {
     super.key,
     required this.hint,
     this.height = 48,
-    required this.onChanged,
+    required this.onChanged, 
   });
 
   @override
@@ -44,15 +44,5 @@ class _TextfieldImputState extends State<TextfieldImput> {
         ),
       ),
     );
-  }
-
-  String get text {
-    return _controller.text;
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
   }
 }

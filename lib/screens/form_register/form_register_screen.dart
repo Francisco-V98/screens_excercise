@@ -27,7 +27,8 @@ class _Body extends StatefulWidget {
 }
 
 class _BodyState extends State<_Body> {
-  String lastName = '';
+  Map<String, String?> textValues = {};
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -54,14 +55,14 @@ class _BodyState extends State<_Body> {
 
   ButtonActionPrimary buttonActionPrimary(BuildContext context) {
     return ButtonActionPrimary(
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return FormRegisterViewData(
-                    dataText: lastName,
-                  );
-                }));
-              },
-            );
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return FormRegisterViewData(
+            dataText: textValues,
+          );
+        }));
+      },
+    );
   }
 
   Row _checkbox() {
@@ -84,13 +85,19 @@ class _BodyState extends State<_Body> {
       children: [
         TextfieldImput(
           hint: 'Direccion',
-          onChanged: (String value) {},
+          onChanged: (String value) {
+            textValues['Direccion'] = value;
+            setState(() {});
+          },
         ),
         const SizedBox(height: 16),
         TextfieldImput(
           hint: 'Descripcion',
           height: 100,
-          onChanged: (String value) {},
+          onChanged: (String value) {
+            textValues['Descripcion'] = value;
+            setState(() {});
+          },
         ),
       ],
     );
@@ -103,6 +110,10 @@ class _BodyState extends State<_Body> {
           child: DropdownDefault(
             hint: 'Ciudad',
             listDropdown: cities,
+            onChanged: (String? value) {
+              textValues['Ciudad'] = value;
+              setState(() {});
+            },
           ),
         ),
         const SizedBox(width: 16),
@@ -110,6 +121,10 @@ class _BodyState extends State<_Body> {
           child: DropdownDefault(
             hint: 'Genero',
             listDropdown: genders,
+            onChanged: (String? value) {
+              textValues['Genero'] = value;
+              setState(() {});
+            },
           ),
         ),
       ],
@@ -122,7 +137,10 @@ class _BodyState extends State<_Body> {
         Expanded(
           child: TextfieldImput(
             hint: 'Nombre',
-            onChanged: (String value) {},
+            onChanged: (String value) {
+              textValues['Nombre'] = value;
+              setState(() {});
+            },
           ),
         ),
         const SizedBox(width: 16),
@@ -130,10 +148,8 @@ class _BodyState extends State<_Body> {
           child: TextfieldImput(
             hint: 'Apellido',
             onChanged: (String value) {
-              lastName = value;
-              setState(() {
-                
-              });
+              textValues['Apellido'] = value;
+              setState(() {});
             },
           ),
         ),

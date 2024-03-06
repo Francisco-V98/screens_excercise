@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:screens_excercise/widgets/general/widgets.dart';
 
 class FormRegisterViewData extends StatelessWidget {
-  final String dataText;
+  final Map<String, String?> dataText;
 
   const FormRegisterViewData({super.key, required this.dataText});
 
@@ -22,7 +22,7 @@ class FormRegisterViewData extends StatelessWidget {
 }
 
 class _Body extends StatelessWidget {
-  final String dataText;
+  final Map<String, String?> dataText;
   const _Body(this.dataText);
 
   @override
@@ -35,50 +35,49 @@ class _Body extends StatelessWidget {
           children: [
             Row(
               children: [
-                const Expanded(
+                Expanded(
                   child: GroupTextDataRegister(
                     title: 'Nombre',
-                    dataText: 'hola',
+                    dataText: '${dataText['Nombre']}',
                   ),
                 ),
                 Expanded(
                   child: GroupTextDataRegister(
                     title: 'Apellido',
-                    dataText: dataText,
+                    dataText: '${dataText['Apellido']}',
                   ),
                 ),
               ],
             ),
             const SizedBox(height: 32),
-            const Row(
+            Row(
               children: [
                 Expanded(
                   child: GroupTextDataRegister(
                     title: 'Ciudad',
-                    dataText: 'Yaricuy',
+                    dataText: '${dataText['Ciudad']}',
                   ),
                 ),
                 Expanded(
                   child: GroupTextDataRegister(
                     title: 'Genero',
-                    dataText: 'Masculino',
+                    dataText: '${dataText['Genero']}',
                   ),
                 ),
               ],
             ),
             const SizedBox(height: 32),
-            const Column(
+            Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 GroupTextDataRegister(
                   title: 'Direccion',
-                  dataText: 'Yaritagua - Yaracuy, Sector la mora',
+                  dataText: '${dataText['Direccion']}',
                 ),
-                SizedBox(height: 32),
+                const SizedBox(height: 32),
                 GroupTextDataRegister(
                   title: 'Descripcion',
-                  dataText:
-                      'Soy un chamo Venezolano que es dise;ador pero le toca programar tambien.',
+                  dataText: '${dataText['Descripcion']}',
                 ),
               ],
             ),

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
 class DropdownDefault extends StatefulWidget {
-  final String hint;
+  final Function(String? value)? onChanged;
+  final String hint; 
   final List<String> listDropdown;
   const DropdownDefault({
     super.key,
     required this.hint,
     required this.listDropdown,
+    this.onChanged,
   });
 
   @override
@@ -33,10 +35,12 @@ class _DropdownDefaultState extends State<DropdownDefault> {
         isExpanded: true,
         icon: const Icon(Icons.arrow_drop_down),
         value: dropdownValue,
+        // onChanged: widget.onChanged,
         onChanged: (String? newValue) {
-          setState(() {
-            dropdownValue = newValue!;
-          });
+          dropdownValue = newValue!;
+          // widget.onChanged => () newValue;
+          widget.onChanged?.call(newValue);
+          setState(() {});
         },
         items:
             widget.listDropdown.map<DropdownMenuItem<String>>((String value) {
